@@ -1,0 +1,23 @@
+<template name='wealth'>
+    <div class="container">
+      <div class="span8">
+	<table class="table table-hover">
+	 <thead>
+	  <tr>
+	   <th>用户</th>
+	   <th>财富</th>
+	  </tr>
+	 </thead>
+{{#each wealth_top20 }}
+	 <tbody>
+	  <tr>
+	   <td style="font-size:{{ranking_fontsize balance}}px">{{username}}</td>
+	   <td style="font-size:{{ranking_fontsize balance}}px">{{balance}}</td>
+	  </tr>
+	 </tbody>
+{{/each}}
+	</table>
+      </div>
+    </div>
+
+</template>

@@ -1,0 +1,61 @@
+<template name='mysell'>
+    <div class="container">
+      <div class="span12">
+        <ul class="thumbnails">
+  
+{{#each mysellitems }}
+{{> mysellitem }}
+{{/each}}
+        </ul>
+      </div>
+  
+<!--
+      <div class="span12">
+        <div class="pagination pagination-centered">
+          <ul>
+            <li class="disabled"><a href="#">&laquo;</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">&raquo;</a></li>
+          </ul>
+        </div>
+      </div>
+-->
+
+    </div>
+</template>
+
+<template name="mysellitem">
+          <li class="span2">
+            <div class="thumbnail">
+              <a href="#item_detail.html"><img src="{{ upload_dir }}/{{ image }}" alt="" width="260"></a>
+              <h2>{{ name }}</h2>
+              <h4>标签： {{#each tags }}<span class="label">{{ this }}</span> {{/each}}</h4>
+              <h4>价格：{{ price }}元</h4>
+{{#if buyer }}
+              <p>已被 {{showUsername buyer }} 购买！</p>
+{{ else }}
+              <p><button class="btn btn-small btn-danger deletesubmit" value="{{ _id }}" href="#">删除</button> <a class="btn btn-small btn-info" href="#repriceModal{{ _id }}" data-toggle="modal">改价</a></p>
+{{/if}}
+            </div>
+          </li>
+<div id="repriceModal{{ _id }}" class="modal hide " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">改价 - {{ name }}</h3>
+  </div>
+  <div class="modal-body">
+    <img src="img/dolls.jpg" alt="" width="100">
+    <p>原价：<strong>{{ price }}元</strong>。改为： </p>
+                <div class="input-prepend input-append">
+                  <span class="add-on">¥</span><input type="text" class="input-small" id="reprice_{{ _id }}" placeholder="0"><span class="add-on">元</span>
+                </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary repricesubmit" value="{{ _id }}">改价</button>
+  </div>
+</div>
+</template>

@@ -1,0 +1,82 @@
+
+<template name="itemindex">
+{{#if enableSearch }}
+{{> searchbar }}
+{{/if}}
+
+    <div class="container">
+      <div class="span12">
+        <ul class="thumbnails">
+  
+{{#each items}}
+  {{> item }}
+{{/each}}
+  
+        </ul>
+      </div>
+      
+<!--
+      <div class="span12">
+        <div class="pagination pagination-centered">
+          <ul>
+            <li class="disabled"><a href="#">&laquo;</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">&raquo;</a></li>
+          </ul>
+        </div>
+      </div>
+-->
+
+    </div>
+
+</template>
+
+<template name="item">
+          <li class="span2">
+            <div class="thumbnail">
+              <a href="#itemDetail{{ _id }}" data-toggle="modal"><img src="{{ upload_dir }}/{{ image }}" alt="" width="260"></a>
+              <h2>{{ name }}</h2>
+              <h4>标签： {{#each tags }}<span class="label taglabel {{ highlineTag this }}">{{ this }}</span> {{/each}}</h4>
+              <p><span>价格：<strong>{{ price }}元</strong></span>
+              <span>卖家：{{ showUsername owner }}</span>
+              </p>
+            </div>
+          </li>
+<!-- Modal -->
+<div id="itemDetail{{ _id }}" class="modal hide " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">{{ name }}</h3>
+  </div>
+  <div class="modal-body">
+    <img src="{{ upload_dir }}/{{ image }}" alt="" width="160">
+              <h4>标签： {{#each tags }}<span class="label">{{ this }}</span> {{/each}}</h4>
+    <h4>价格：{{ price }}元</h4>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+{{#if currentUser }}
+    <button class="btn btn-primary buysubmit" value="{{ _id }}">购买</button>
+{{/if}}
+  </div>
+</div>
+</template>
+
+<template name="searchbar">
+    <div class="container"> 
+      <div class="span12">
+        <form class="well form-search">
+          <select>
+            <option>商品名称</option>
+            <option>标签</option>
+            <option>价格小于</option>
+          </select>
+          <input type="text" class="input-small search-query" placeholder="请输入..">
+          <button type="submit" class="btn">搜索</button>
+        </form>
+      </div>
+    </div>
+</template>

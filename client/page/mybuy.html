@@ -1,0 +1,43 @@
+
+<template name='mybuy'>
+    <div class="container">
+      <div class="span12">
+        <ul class="thumbnails">
+
+{{#each mybuyitems }}
+  {{> mybuyitem }}
+{{/each}}
+
+        </ul>
+      </div>
+
+<!--
+      <div class="span12">
+        <div class="pagination pagination-centered">
+          <ul>
+            <li class="disabled"><a href="#">&laquo;</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">&raquo;</a></li>
+          </ul>
+        </div>
+      </div>
+-->
+
+    </div>
+</template>
+
+<template name="mybuyitem">
+          <li class="span2">
+            <div class="thumbnail">
+              <a href="#item_detail.html"><img src="{{ upload_dir }}/{{ image }}" alt="" width="260"></a>
+              <h2>{{ name }}</h2>
+              <h4>标签： {{#each tags }}<span class="label">{{ this }}</span> {{/each}}</h4>
+              <h4>价格：{{ price }}元</h4>
+              <p>卖家：{{ showUsername owner }}</p>
+            </div>
+          </li>
+</template>
+

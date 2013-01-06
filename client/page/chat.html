@@ -1,0 +1,30 @@
+<template name='chat'>
+    <div class="container">
+      <div class="span8">
+ 	<form class="form-horizontal">
+ 	<input id="input-chat" class="input-xlarge" type="text" placeholder="input you message"/>
+	</form>
+	<div>
+	<dl>
+<!--
+	 <dt class="text-warning">xxb:</dt>
+	 <dd class="text-warning">this is message</dd>
+  	 <dt class="text-success">xxb:</dt>
+	 <dd class="text-success">this s al mlwkefjwef</dd>
+  	 <div class="text-info">
+  	  <dt>xxb:</dt>
+	  <dd>this s al mlwkefjwef</dd>
+ 	 </div>
+-->
+{{#each chatlist}}
+  	 <div class="{{ style }}">
+  	  <dt>{{#if uid}}{{showUsername uid}}{{else}}Anonymous{{/if}}:</dt>
+	  <dd>{{content}}</dd>
+ 	 </div>
+{{/each}}
+	</dl>
+	</div>
+      </div>
+    </div>
+
+</template>

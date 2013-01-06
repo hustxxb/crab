@@ -1,0 +1,127 @@
+  <head>
+    <meta charset="utf-8">
+    <title>C2C交易平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+{{> market }}
+</body>
+
+<template name="market">
+
+{{> navbar }}
+
+{{> register }}
+
+{{#if alertmsg }}
+  {{> alerttip }}
+{{/if}}
+
+{{#if showitemindex }}
+  {{> itemindex }}
+{{/if}}
+
+{{#if showchat }}
+  {{> chat }}
+{{/if}}
+
+{{#if showwealth }}
+  {{> wealth }}
+{{/if}}
+
+{{#if currentUser }}
+{{#if showmyindex }}
+  {{> myindex }}
+{{/if}}
+{{/if}}
+
+</template>
+
+
+<template name="alerttip">
+    <div class="container">
+      <div class="span12">
+        <div class="alert fade in {{#if alertTypeError }}alert-error{{else}}alert-success{{/if}}">
+          <a class="close" data-dismiss="alert">×</a>
+          <strong>{{#if alertTypeError }}Error:{{else}}Success:{{/if}}</strong> {{ alertmsg }}
+        </div>
+      </div>
+    </div>
+
+</template>
+
+
+
+<template name="navbar">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+
+          <a class="brand" href="#" id='logo'>交易平台</a>
+           
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+              <li><a href="/#chat" id="chat">气嘴八舌</a></li>
+              <li><a href="/#wealth" id="wealth">财富排行榜</a></li>
+              <li><a href="/" id='index'>首页</a></li>
+            </ul>
+{{#if currentUser }}
+            <ul class="nav">
+              <li><a href="/#myindex" id='myindex'>我的资料({{ currentUser.username }} - <span class="label label-success">{{ userDetail.balance }}</span>)</a></li>
+              <li><a href="/#logout" id='logout'>退出</a></li>
+            </ul>
+{{ else }}
+            <form class="navbar-search" action="#">
+              <input type="text" class="input-small" id="username" placeholder="Username">
+              <input type="password" class="input-small" id="password" placeholder="Password">
+            </form>
+            <ul class="nav">
+              <li><a href="/#login" id="loginsubmit">登录</a></li>
+              <li><a href="#myModal" data-toggle="modal">注册</a></li>
+            </ul>
+{{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+</template>
+
+<template name="register">
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">新用户注册</h3>
+  </div>
+  <div class="modal-body">
+<form class="form-horizontal">
+            <div class="control-group">
+              <label class="control-label" for="username">帐号</label>
+              <div class="controls">
+                <input type="text" id="reg_username" placeholder="Username">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="password">密码</label>
+              <div class="controls">
+                <input type="password" class="input-medium" id="reg_password" placeholder="Password">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="password2">密码确认</label>
+              <div class="controls">
+                <input type="password" class="input-medium" id="reg_password2" placeholder="Password">
+              </div>
+            </div>
+</form>
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button id="registersubmit" class="btn btn-primary">Sign up</button>
+  </div>
+</div>
+</template>

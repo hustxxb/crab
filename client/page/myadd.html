@@ -1,0 +1,55 @@
+<template name='myadd'>
+
+    <div class="container">
+      <div class="span8">
+        <form id='additem' class="form-horizontal well">
+          <fieldset>
+            <legend>添加新商品</legend>
+            <div class="control-group">
+              <label class="control-label" for="name">名称</label>
+              <div class="controls">
+                <input type="text" class="input-medium" id="name">
+              </div>
+            </div>
+  
+            <div class="control-group">
+              <label class="control-label" for="price">价格</label>
+              <div class="controls">
+                <div class="input-prepend input-append">
+                  <span class="add-on">¥</span><input type="text" class="input-small" id="price" placeholder="0"><span class="add-on">元</span>
+                </div>
+              </div>
+            </div>
+  
+            <div class="control-group">
+              <label class="control-label" for="tags">标签</label>
+              <div class="controls">
+                <input type="text" class="input-large" id="tags">
+                <span class="help-inline">多个标签间用<span class="label label-warning">空格</span>分隔</span>
+              </div>
+            </div>
+  
+            <div class="control-group">
+              <label class="control-label" for="photo">上传照片</label>
+              <div class="controls">
+                <input id="photo" class="input-file" type="file">
+              </div>
+            </div>
+  
+            <div class="control-group">
+              <label class="control-label" for="description">详细描述</label>
+              <div class="controls">
+                <textarea id="description" class="input-xlarge" rows="3"></textarea>
+              </div>
+            </div>
+  
+            <div class="form-actions">
+              <button id='additemsubmit' class="btn btn-primary">确定</button>
+              <button type="reset" class="btn">取消</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+</template>
